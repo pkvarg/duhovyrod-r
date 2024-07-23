@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  overflow-x: hidden;
+  font-family: 'Baloo 2', cursive;
+  font-weight: 400;
+}
+
+p {
+  text-align: justify;
+  font-size: 22.5px;
+  line-height: 34px;
+}
+
+#verse-ref {
+  font-size: 15px;
+}
+
+.pacifico {
+  font-family: 'Pacifico', cursive;
+}
+
+.subtitle {
+  color: rgb(51, 117, 155);
+  /* color: hsl(184, 86%, 60%); */
+  text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white,
+    1px 1px 0 white;
+}
+
+.subtitle-pink {
+  color: #ee36c9;
+  text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white,
+    1px 1px 0 white;
+}
+
+.intro h3 {
+  font-weight: bolder;
+  text-align: center;
+  padding: 30px 0;
+
+  /* font-family: 'Pacifico', cursive; */
+  /* letter-spacing: 3px; */
+}
+
+.duha-gradient {
+  background-image: linear-gradient(
+    to right,
+
+    #4b0082,
+    #ee36c9,
+    #26e41f,
+    #bb1515
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text; /* For Safari support */
+
+  color: transparent;
+  font-weight: 600;
+}
+
+.duha-grad {
+  background-image: linear-gradient(
+    to bottom,
+
+    #685178,
+    #968065,
+    #968065,
+    #8c5758
+  );
+}
+
+.title-grad {
+  background-image: linear-gradient(to right, #ee36c9, #ffffff);
+  background-clip: text;
+  -webkit-background-clip: text; /* For Safari support */
+
+  color: transparent;
+  font-weight: 500;
+}
+
+.hero {
+  background-image: linear-gradient(to bottom, #1e1c1c00, #433f3f5f, #685178),
+    url('/hero2.webp');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+  height: 115vh;
+}
+
+.top-to-btm {
+  position: relative;
+}
+
+.icon-position {
+  position: fixed;
+  bottom: 80px;
+  right: 25px;
+  z-index: 20;
+}
+.icon-style {
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  color: #000;
+  cursor: pointer;
+  animation: movebtn 3s ease-in-out infinite;
+  transition: all 0.5s ease-in-out;
+}
+.icon-style:hover {
+  animation: none;
+  background: #000000;
+  color: #fff;
+  border: 2px solid #ffffff;
+}
+@keyframes movebtn {
+  0% {
+    transform: translateY(0px);
+  }
+  25% {
+    transform: translateY(10px);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+  75% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .hero {
+    height: 80vh;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  #verse-ref {
+    font-size: 12px;
+  }
+}
