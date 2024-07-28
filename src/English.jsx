@@ -18,7 +18,7 @@ const English = () => {
           </div>
           <div className='duha-grad'>
             <div className='text-justify mx-4 lg:mx-[5%] text-[22.5px]  py-8 intro'>
-              <h3 className='text-white text-[27.5px] -mt-[25%] subtitle'>
+              <h3 className='text-white text-[27.5px] lg:-mt-[25%] subtitle'>
                 How do I know that?
               </h3>
               <p>

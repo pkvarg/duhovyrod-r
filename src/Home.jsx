@@ -43,7 +43,7 @@ const Home = () => {
             </div>
             <div className='duha-grad'>
               <div className='text-justify mx-4 lg:mx-[5%] py-8 intro'>
-                <h3 className='text-white -mt-[25%]  text-[27.5px] subtitle'>
+                <h3 className='text-white lg:-mt-[25%]  text-[27.5px] subtitle'>
                   Ako to viem?
                 </h3>
                 <p>
@@ -327,7 +327,7 @@ const Home = () => {
             </div>
             <div className='duha-grad'>
               <div className='text-justify mx-4 lg:mx-[5%] text-[22.5px] py-8 intro'>
-                <h3 className='text-white -mt-[25%]  text-[27.5px] subtitle'>
+                <h3 className='text-white lg:-mt-[25%]  text-[27.5px] subtitle'>
                   Jak to vím?
                 </h3>
 
