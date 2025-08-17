@@ -1,17 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Footer from './components/Footer'
-import CookieConsent from 'react-cookie-consent'
+import ConsentBanner from './components/ConsentBanner'
 import axios from 'axios'
 import { useStateContext } from './context/StateContext'
 import LanguageBar from './components/LanguageBar'
 import English from './English'
+import { loadUmamiScript, removeUmamiScript } from './utils/umami'
 
 const Home = () => {
   const { language } = useStateContext()
 
   console.log(language)
 
-  const [cookieAccept, setCookieAccept] = useState(false)
+  useEffect(() => {
+    const consent = localStorage.getItem('analyticsConsent')
+    if (consent === 'accepted') {
+      loadUmamiScript()
+    }
+  }, [])
 
   const config = {
     headers: {
@@ -26,8 +32,17 @@ const Home = () => {
     try {
       const { data } = await axios.put(apiUrl, {}, config)
     } catch (error) {
-      console.error('Error tracking declined visitors:', error)
+      console.error('Error tracking visitors:', error)
     }
+  }
+
+  const handleConsentAccept = () => {
+    loadUmamiScript()
+    increaseVisitors()
+  }
+
+  const handleConsentDecline = () => {
+    removeUmamiScript()
   }
 
   // const increaseVisitorsCount = async () => {
@@ -495,35 +510,11 @@ const Home = () => {
           </>
         )}
       </div>
-      <CookieConsent
-        location="bottom"
-        style={{
-          background: '#6e587a',
-          color: '#f1bf41',
-          fontSize: '18px',
-          textAlign: 'justify',
-        }}
-        buttonStyle={{
-          background: '#39bb2f',
-          color: '#fff',
-          fontSize: '20px',
-          padding: '2.5px 5px',
-        }}
-        buttonText={
-          (language === 'slovak' && 'Pokračovať') ||
-          (language === 'english' && 'Continue') ||
-          (language == 'czech' && 'Pokračovat')
-        }
-        expires={365}
-        onAccept={() => {
-          setCookieAccept(true)
-          increaseVisitors()
-        }}
-      >
-        {(language === 'slovak' && 'Táto stránka nezhromažďuje žiadne údaje') ||
-          (language === 'english' && 'This site does not collect any information') ||
-          (language === 'czech' && 'Tato stránka neshromažďuje žádné údaje')}
-      </CookieConsent>
+      <ConsentBanner
+        language={language}
+        onAccept={handleConsentAccept}
+        onDecline={handleConsentDecline}
+      />
     </>
   )
 }
