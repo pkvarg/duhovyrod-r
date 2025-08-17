@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import Footer from './components/Footer'
 import ConsentBanner from './components/ConsentBanner'
 import axios from 'axios'
@@ -30,7 +30,7 @@ const Home = () => {
 
   const increaseVisitors = async () => {
     try {
-      const { data } = await axios.put(apiUrl, {}, config)
+      await axios.put(apiUrl, {}, config)
     } catch (error) {
       console.error('Error tracking visitors:', error)
     }
@@ -43,6 +43,7 @@ const Home = () => {
 
   const handleConsentDecline = () => {
     removeUmamiScript()
+    increaseVisitors()
   }
 
   // const increaseVisitorsCount = async () => {
